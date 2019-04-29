@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProjectWebIV_Backend</name>
+    </assembly>
+    <members>
+        <member name="M:ProjectWebIV_Backend.Controllers.PostsController.GetPosts">
+            <summary>
+            Get all posts ordered by name
+            </summary>
+            <returns>array of posts</returns>
+        </member>
+        <member name="M:ProjectWebIV_Backend.Controllers.PostsController.GetPost(System.Int32)">
+            <summary>
+            Get the post with given id
+            </summary>
+            <param name="id">the id of the post</param>
+            <returns>The post</returns>
+        </member>
+        <member name="M:ProjectWebIV_Backend.Controllers.PostsController.PostPost(ProjectWebIV_Backend.DTO.PostDTO)">
+            <summary>
+            Adds a new post
+            </summary>
+            <param name="post">the new post</param>
+        </member>
+        <member name="M:ProjectWebIV_Backend.Controllers.PostsController.PutPost(System.Int32,ProjectWebIV_Backend.Models.Post)">
+            <summary>
+            Modifies a post
+            </summary>
+            <param name="id">id of the post to be modified</param>
+            <param name="post">the modified post</param>
+        </member>
+        <member name="M:ProjectWebIV_Backend.Controllers.PostsController.DeletePost(System.Int32)">
+            <summary>
+            Deletes a post
+            </summary>
+            <param name="id">the id of the post to be deleted</param>
+        </member>
+    </members>
+</doc>

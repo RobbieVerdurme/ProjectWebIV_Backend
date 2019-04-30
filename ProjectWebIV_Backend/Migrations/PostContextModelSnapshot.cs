@@ -25,11 +25,11 @@ namespace ProjectWebIV_Backend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Autheur")
+                    b.Property<DateTime>("Created");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(50);
-
-                    b.Property<DateTime>("Created");
 
                     b.Property<int>("PostId");
 
@@ -46,24 +46,24 @@ namespace ProjectWebIV_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Autheur = "Robbie Verdurme",
-                            Created = new DateTime(2019, 3, 18, 22, 14, 53, 187, DateTimeKind.Local).AddTicks(4494),
+                            Created = new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(5157),
+                            Name = "Robbie Verdurme",
                             PostId = 1,
                             Text = "Comment 1"
                         },
                         new
                         {
                             Id = 2,
-                            Autheur = "Robbie Verdurme",
-                            Created = new DateTime(2019, 3, 18, 22, 14, 53, 187, DateTimeKind.Local).AddTicks(5536),
+                            Created = new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(6289),
+                            Name = "Robbie Verdurme",
                             PostId = 1,
                             Text = "Comment 2"
                         },
                         new
                         {
                             Id = 3,
-                            Autheur = "Robbie Verdurme",
-                            Created = new DateTime(2019, 3, 18, 22, 14, 53, 187, DateTimeKind.Local).AddTicks(5548),
+                            Created = new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(7157),
+                            Name = "Robbie Verdurme",
                             PostId = 1,
                             Text = "Comment 3"
                         });
@@ -77,6 +77,8 @@ namespace ProjectWebIV_Backend.Migrations
 
                     b.Property<DateTime>("Created");
 
+                    b.Property<string>("Description");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(50);
@@ -89,13 +91,13 @@ namespace ProjectWebIV_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2019, 3, 18, 22, 14, 53, 187, DateTimeKind.Local).AddTicks(2965),
+                            Created = new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(3298),
                             Title = "Post 1"
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2019, 3, 18, 22, 14, 53, 187, DateTimeKind.Local).AddTicks(2995),
+                            Created = new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(3342),
                             Title = "Post 2"
                         });
                 });

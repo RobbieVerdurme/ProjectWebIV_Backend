@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProjectWebIV_Backend.Migrations
 {
-    public partial class Inital : Migration
+    public partial class InitalMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,6 +15,7 @@ namespace ProjectWebIV_Backend.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Title = table.Column<string>(maxLength: 50, nullable: false),
+                    Description = table.Column<string>(nullable: true),
                     Created = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -30,7 +31,7 @@ namespace ProjectWebIV_Backend.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Text = table.Column<string>(nullable: false),
                     Created = table.Column<DateTime>(nullable: false),
-                    Autheur = table.Column<string>(maxLength: 50, nullable: false),
+                    Name = table.Column<string>(maxLength: 50, nullable: false),
                     PostId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -46,28 +47,28 @@ namespace ProjectWebIV_Backend.Migrations
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "Created", "Title" },
-                values: new object[] { 1, new DateTime(2019, 3, 18, 22, 14, 53, 187, DateTimeKind.Local).AddTicks(2965), "Post 1" });
+                columns: new[] { "Id", "Created", "Description", "Title" },
+                values: new object[] { 1, new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(3298), null, "Post 1" });
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "Created", "Title" },
-                values: new object[] { 2, new DateTime(2019, 3, 18, 22, 14, 53, 187, DateTimeKind.Local).AddTicks(2995), "Post 2" });
+                columns: new[] { "Id", "Created", "Description", "Title" },
+                values: new object[] { 2, new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(3342), null, "Post 2" });
 
             migrationBuilder.InsertData(
                 table: "Comment",
-                columns: new[] { "Id", "Autheur", "Created", "PostId", "Text" },
-                values: new object[] { 1, "Robbie Verdurme", new DateTime(2019, 3, 18, 22, 14, 53, 187, DateTimeKind.Local).AddTicks(4494), 1, "Comment 1" });
+                columns: new[] { "Id", "Created", "Name", "PostId", "Text" },
+                values: new object[] { 1, new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(5157), "Robbie Verdurme", 1, "Comment 1" });
 
             migrationBuilder.InsertData(
                 table: "Comment",
-                columns: new[] { "Id", "Autheur", "Created", "PostId", "Text" },
-                values: new object[] { 2, "Robbie Verdurme", new DateTime(2019, 3, 18, 22, 14, 53, 187, DateTimeKind.Local).AddTicks(5536), 1, "Comment 2" });
+                columns: new[] { "Id", "Created", "Name", "PostId", "Text" },
+                values: new object[] { 2, new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(6289), "Robbie Verdurme", 1, "Comment 2" });
 
             migrationBuilder.InsertData(
                 table: "Comment",
-                columns: new[] { "Id", "Autheur", "Created", "PostId", "Text" },
-                values: new object[] { 3, "Robbie Verdurme", new DateTime(2019, 3, 18, 22, 14, 53, 187, DateTimeKind.Local).AddTicks(5548), 1, "Comment 3" });
+                columns: new[] { "Id", "Created", "Name", "PostId", "Text" },
+                values: new object[] { 3, new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(7157), "Robbie Verdurme", 1, "Comment 3" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_PostId",

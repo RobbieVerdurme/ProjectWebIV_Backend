@@ -19,7 +19,7 @@ namespace ProjectWebIV_Backend.Data
         #endregion
 
         #region Method
-        public void InitializeData()
+        public async Task InitializeData()
         {
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())

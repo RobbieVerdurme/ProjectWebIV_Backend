@@ -57,9 +57,12 @@ namespace ProjectWebIV_Backend.Controllers
         [HttpPost]
         public ActionResult<Post> PostPost(PostDTO post)
         {
-            Post postToCreate = new Post() { Title = post.Title };
-            foreach (var i in post.Comments)
-                postToCreate.AddComment(new Comment(i.Text, i.Autheur));
+            Post postToCreate = new Post() { Title = post.Title, Description = post.Description };
+            if(post.Comments != null)
+            {
+                foreach (var i in post.Comments)
+                    postToCreate.AddComment(new Comment(i.Text, i.Name));
+            }
             _postRepository.Add(postToCreate);
             _postRepository.SaveChanges();
 

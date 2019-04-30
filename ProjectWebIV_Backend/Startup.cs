@@ -61,8 +61,7 @@ namespace ProjectWebIV_Backend
             app.UseCors("AllowAllOrigins");
             app.UseSwaggerUi3();
             app.UseSwagger();
-
-            postDataInitalizer.InitializeData();
+            postDataInitalizer.InitializeData().Wait();
         }
     }
 }

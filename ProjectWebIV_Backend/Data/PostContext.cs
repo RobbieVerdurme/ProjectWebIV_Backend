@@ -25,19 +25,19 @@ namespace ProjectWebIV_Backend.Data
                 .HasForeignKey("PostId"); //Shadow property
             modelBuilder.Entity<Post>().Property(r => r.Title).IsRequired().HasMaxLength(50);
             modelBuilder.Entity<Comment>().Property(r => r.Text).IsRequired();
-            modelBuilder.Entity<Comment>().Property(r => r.Autheur).IsRequired().HasMaxLength(50);
+            modelBuilder.Entity<Comment>().Property(r => r.Name).IsRequired().HasMaxLength(50);
 
             //Another way to seed the database
             modelBuilder.Entity<Post>().HasData(
-                new Post { Id = 1, Title = "Post 1", Created = DateTime.Now },
+                new Post { Id = 1, Title = "Post 1", Created = DateTime.Now, Description="testje" },
                 new Post { Id = 2, Title = "Post 2", Created = DateTime.Now }
   );
 
             modelBuilder.Entity<Comment>().HasData(
                     //Shadow property can be used for the foreign key, in combination with anaonymous objects
-                    new { Id = 1, Text = "Comment 1", Created = DateTime.Now, Autheur = "Robbie Verdurme" , PostId = 1 },
-                    new { Id = 2, Text = "Comment 2", Created = DateTime.Now, Autheur = "Robbie Verdurme" , PostId = 1 },
-                    new { Id = 3, Text = "Comment 3", Created = DateTime.Now, Autheur = "Robbie Verdurme" , PostId = 1 }
+                    new { Id = 1, Text = "Comment 1", Created = DateTime.Now, Name = "Robbie Verdurme" , PostId = 1,},
+                    new { Id = 2, Text = "Comment 2", Created = DateTime.Now, Name = "Robbie Verdurme" , PostId = 1 },
+                    new { Id = 3, Text = "Comment 3", Created = DateTime.Now, Name = "Robbie Verdurme" , PostId = 1 }
                  );
         }
         #endregion

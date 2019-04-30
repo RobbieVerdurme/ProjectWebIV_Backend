@@ -16,15 +16,15 @@ namespace ProjectWebIV_Backend.Models
         public DateTime Created { get; set; }
 
         [Required]
-        public string Autheur { get; set; }
+        public string Name { get; set; }
         #endregion
 
         #region Constructor
-        public Comment(string text, string autheur)
+        public Comment(string text, string name)
         {
             Text = text;
             Created = DateTime.Now;
-            Autheur = autheur;
+            Name = name;
         }
         #endregion
     }

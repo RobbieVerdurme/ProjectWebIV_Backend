@@ -10,7 +10,7 @@ using ProjectWebIV_Backend.Data;
 namespace ProjectWebIV_Backend.Migrations
 {
     [DbContext(typeof(PostContext))]
-    [Migration("20190430095646_InitalMigration")]
+    [Migration("20190502121407_InitalMigration")]
     partial class InitalMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,7 +48,7 @@ namespace ProjectWebIV_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(5157),
+                            Created = new DateTime(2019, 5, 2, 14, 14, 7, 330, DateTimeKind.Local).AddTicks(3372),
                             Name = "Robbie Verdurme",
                             PostId = 1,
                             Text = "Comment 1"
@@ -56,7 +56,7 @@ namespace ProjectWebIV_Backend.Migrations
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(6289),
+                            Created = new DateTime(2019, 5, 2, 14, 14, 7, 330, DateTimeKind.Local).AddTicks(4455),
                             Name = "Robbie Verdurme",
                             PostId = 1,
                             Text = "Comment 2"
@@ -64,11 +64,34 @@ namespace ProjectWebIV_Backend.Migrations
                         new
                         {
                             Id = 3,
-                            Created = new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(7157),
+                            Created = new DateTime(2019, 5, 2, 14, 14, 7, 330, DateTimeKind.Local).AddTicks(4473),
                             Name = "Robbie Verdurme",
                             PostId = 1,
                             Text = "Comment 3"
                         });
+                });
+
+            modelBuilder.Entity("ProjectWebIV_Backend.Models.Customer", b =>
+                {
+                    b.Property<int>("CustomerId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50);
+
+                    b.HasKey("CustomerId");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("ProjectWebIV_Backend.Models.Post", b =>
@@ -93,13 +116,14 @@ namespace ProjectWebIV_Backend.Migrations
                         new
                         {
                             Id = 1,
-                            Created = new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(3298),
+                            Created = new DateTime(2019, 5, 2, 14, 14, 7, 330, DateTimeKind.Local).AddTicks(860),
+                            Description = "testje",
                             Title = "Post 1"
                         },
                         new
                         {
                             Id = 2,
-                            Created = new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(3342),
+                            Created = new DateTime(2019, 5, 2, 14, 14, 7, 330, DateTimeKind.Local).AddTicks(1351),
                             Title = "Post 2"
                         });
                 });

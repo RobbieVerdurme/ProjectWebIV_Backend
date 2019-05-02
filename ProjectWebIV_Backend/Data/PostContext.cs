@@ -1,13 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ProjectWebIV_Backend.Models;
 using System;
 
 namespace ProjectWebIV_Backend.Data
 {
-    public class PostContext : DbContext
+    public class PostContext : IdentityDbContext
     {
         #region Properties
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         #endregion
 
         #region Constructor
@@ -26,6 +28,10 @@ namespace ProjectWebIV_Backend.Data
             modelBuilder.Entity<Post>().Property(r => r.Title).IsRequired().HasMaxLength(50);
             modelBuilder.Entity<Comment>().Property(r => r.Text).IsRequired();
             modelBuilder.Entity<Comment>().Property(r => r.Name).IsRequired().HasMaxLength(50);
+
+            modelBuilder.Entity<Customer>().Property(c => c.LastName).IsRequired().HasMaxLength(50);
+            modelBuilder.Entity<Customer>().Property(c => c.FirstName).IsRequired().HasMaxLength(50);
+            modelBuilder.Entity<Customer>().Property(c => c.Email).IsRequired().HasMaxLength(100);
 
             //Another way to seed the database
             modelBuilder.Entity<Post>().HasData(

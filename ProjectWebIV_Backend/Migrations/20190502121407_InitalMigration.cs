@@ -9,6 +9,21 @@ namespace ProjectWebIV_Backend.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Customers",
+                columns: table => new
+                {
+                    CustomerId = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    FirstName = table.Column<string>(maxLength: 50, nullable: false),
+                    LastName = table.Column<string>(maxLength: 50, nullable: false),
+                    Email = table.Column<string>(maxLength: 100, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Customers", x => x.CustomerId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Posts",
                 columns: table => new
                 {
@@ -48,27 +63,27 @@ namespace ProjectWebIV_Backend.Migrations
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "Created", "Description", "Title" },
-                values: new object[] { 1, new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(3298), null, "Post 1" });
+                values: new object[] { 1, new DateTime(2019, 5, 2, 14, 14, 7, 330, DateTimeKind.Local).AddTicks(860), "testje", "Post 1" });
 
             migrationBuilder.InsertData(
                 table: "Posts",
                 columns: new[] { "Id", "Created", "Description", "Title" },
-                values: new object[] { 2, new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(3342), null, "Post 2" });
+                values: new object[] { 2, new DateTime(2019, 5, 2, 14, 14, 7, 330, DateTimeKind.Local).AddTicks(1351), null, "Post 2" });
 
             migrationBuilder.InsertData(
                 table: "Comment",
                 columns: new[] { "Id", "Created", "Name", "PostId", "Text" },
-                values: new object[] { 1, new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(5157), "Robbie Verdurme", 1, "Comment 1" });
+                values: new object[] { 1, new DateTime(2019, 5, 2, 14, 14, 7, 330, DateTimeKind.Local).AddTicks(3372), "Robbie Verdurme", 1, "Comment 1" });
 
             migrationBuilder.InsertData(
                 table: "Comment",
                 columns: new[] { "Id", "Created", "Name", "PostId", "Text" },
-                values: new object[] { 2, new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(6289), "Robbie Verdurme", 1, "Comment 2" });
+                values: new object[] { 2, new DateTime(2019, 5, 2, 14, 14, 7, 330, DateTimeKind.Local).AddTicks(4455), "Robbie Verdurme", 1, "Comment 2" });
 
             migrationBuilder.InsertData(
                 table: "Comment",
                 columns: new[] { "Id", "Created", "Name", "PostId", "Text" },
-                values: new object[] { 3, new DateTime(2019, 4, 30, 11, 56, 46, 132, DateTimeKind.Local).AddTicks(7157), "Robbie Verdurme", 1, "Comment 3" });
+                values: new object[] { 3, new DateTime(2019, 5, 2, 14, 14, 7, 330, DateTimeKind.Local).AddTicks(4473), "Robbie Verdurme", 1, "Comment 3" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comment_PostId",
@@ -80,6 +95,9 @@ namespace ProjectWebIV_Backend.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Comment");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Posts");

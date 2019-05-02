@@ -4,6 +4,26 @@
         <name>ProjectWebIV_Backend</name>
     </assembly>
     <members>
+        <member name="M:ProjectWebIV_Backend.Controllers.AccountController.CreateToken(ProjectWebIV_Backend.DTO.LoginDTO)">
+            <summary>
+            Login
+            </summary>
+            <param name="model">the login details</param>
+        </member>
+        <member name="M:ProjectWebIV_Backend.Controllers.AccountController.Register(ProjectWebIV_Backend.DTO.RegisterDTO)">
+            <summary>
+            Register a user
+            </summary>
+            <param name="model">the user details</param>
+            <returns></returns>
+        </member>
+        <member name="M:ProjectWebIV_Backend.Controllers.AccountController.CheckAvailableUserName(System.String)">
+            <summary>
+            Checks if an email is available as username
+            </summary>
+            <returns>true if the email is not registered yet</returns>
+            <param name="email">Email.</param>/
+        </member>
         <member name="M:ProjectWebIV_Backend.Controllers.PostsController.GetPosts">
             <summary>
             Get all posts ordered by name

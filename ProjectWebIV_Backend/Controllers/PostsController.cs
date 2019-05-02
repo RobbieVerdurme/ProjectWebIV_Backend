@@ -1,5 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectWebIV_Backend.DTO;
 using ProjectWebIV_Backend.Models;
@@ -9,6 +12,7 @@ namespace ProjectWebIV_Backend.Controllers
     [ApiConventionType(typeof(DefaultApiConventions))]
     [Produces("application/json")]
     [Route("api/[controller]")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [ApiController]
     public class PostsController : ControllerBase
     {
@@ -30,6 +34,7 @@ namespace ProjectWebIV_Backend.Controllers
         /// </summary>
         /// <returns>array of posts</returns>
         [HttpGet]
+        [AllowAnonymous]
         public IEnumerable<Post> GetPosts()
         {
             return _postRepository.GetAll().OrderBy(r => r.Title);

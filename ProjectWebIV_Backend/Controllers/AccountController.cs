@@ -10,6 +10,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using ProjectWebIV_Backend.DTO;
 using ProjectWebIV_Backend.Models;
+using System.Diagnostics;
 
 namespace ProjectWebIV_Backend.Controllers
 {
@@ -70,7 +71,6 @@ namespace ProjectWebIV_Backend.Controllers
             IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
             Customer customer = new Customer { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             var result = await _userManager.CreateAsync(user, model.Password);
-
             if (result.Succeeded)
             {
                 _customerRepository.Add(customer);

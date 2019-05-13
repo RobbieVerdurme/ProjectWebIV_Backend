@@ -9,6 +9,7 @@ namespace ProjectWebIV_Backend.Models
     {
         Post GetBy(int id);
         bool TryGetPost(int id, out Post post);
+        void PostComment(int id, Comment comment);
         IEnumerable<Post> GetAll();
         void Add(Post post);
         void Delete(Post post);

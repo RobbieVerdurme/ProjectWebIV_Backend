@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -62,7 +63,7 @@ namespace ProjectWebIV_Backend.Controllers
         [HttpPost]
         public ActionResult<Post> PostPost(PostDTO post)
         {
-            Post postToCreate = new Post() { Title = post.Title, Description = post.Description };
+            Post postToCreate = new Post() { Title = post.Title, Description = post.Description, Img = post.Img };
             if(post.Comments != null)
             {
                 foreach (var i in post.Comments)
@@ -72,6 +73,25 @@ namespace ProjectWebIV_Backend.Controllers
             _postRepository.SaveChanges();
 
             return CreatedAtAction(nameof(GetPost), new { id = postToCreate.Id }, postToCreate);
+        }
+
+        // POST: api/Posts/{post.id}
+        /// <summary>
+        /// Adds a new comment
+        /// </summary>
+        /// <param name="comment">the new comment</param>
+        [HttpPost("{id}/comments")]
+        public ActionResult<Comment> PostComment(int id, CommentDTO comment)
+        {
+            if(!_postRepository.TryGetPost(id, out var post))
+            {
+                return NotFound();
+            }
+            var commentToCreate = new Comment(comment.Text, comment.Name);
+            post.AddComment(commentToCreate);
+            _postRepository.SaveChanges();
+
+            return CreatedAtAction("GetComment", new { id = post.Id, commentId = commentToCreate.Id }, commentToCreate);
         }
 
         // PUT: api/Post/5

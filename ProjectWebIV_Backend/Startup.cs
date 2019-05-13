@@ -30,7 +30,7 @@ namespace ProjectWebIV_Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<PostContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PostContext")));
+            services.AddDbContext<PostContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PostContext")));            
 
             services.AddScoped<PostDataInitalizer>();
             services.AddScoped<IPostRepository, PostRepository>();

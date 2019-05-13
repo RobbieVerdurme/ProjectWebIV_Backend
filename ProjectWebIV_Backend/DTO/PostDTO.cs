@@ -11,6 +11,7 @@ namespace ProjectWebIV_Backend.DTO
     {
         [Required]
         public string Title { get; set; }
+        public string Img { get; set; }
         public string Description { get; set; }
         public IList<Comment> Comments { get; set; }
     }

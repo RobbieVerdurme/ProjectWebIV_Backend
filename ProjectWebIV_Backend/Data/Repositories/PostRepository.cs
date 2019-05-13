@@ -43,6 +43,11 @@ namespace ProjectWebIV_Backend.Data.Repositories
             return _posts.Include(r => r.Comments).SingleOrDefault(r => r.Id == id);
         }
 
+        public void PostComment(int id, Comment comment)
+        {
+            _posts.Where(p => p.Id == id).FirstOrDefault().Comments.Add(comment);
+        }
+
         public void SaveChanges()
         {
             _context.SaveChanges();

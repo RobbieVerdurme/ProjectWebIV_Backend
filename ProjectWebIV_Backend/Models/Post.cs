@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 
 namespace ProjectWebIV_Backend.Models
 {
     public class Post
     {
-        #region Properties
+        #region Properties        
         public int Id { get; set; }
-        //public int img { get; set; }
+        //[Required]
+        public string Img { get; set; }
         [Required]
         public string Title { get; set; }
         public string Description { get; set; }
@@ -35,6 +34,13 @@ namespace ProjectWebIV_Backend.Models
         {
             Title = title;
             Description = desc;
+        }
+
+        public Post(string title, string desc, string img) : this()
+        {
+            Title = title;
+            Description = desc;
+            Img = img;
         }
         #endregion
 

@@ -40,7 +40,7 @@ namespace ProjectWebIV_Backend.Controllers
         /// Login
         /// </summary>
         /// <param name="model">the login details</param>
-        [AllowAnonymous]
+        [Authorize(Policy ="Admin")]
         [HttpPost]
         public async Task<ActionResult<String>> CreateToken(LoginDTO model)
         {
@@ -71,6 +71,7 @@ namespace ProjectWebIV_Backend.Controllers
             IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
             Customer customer = new Customer { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             var result = await _userManager.CreateAsync(user, model.Password);
+            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role,"Admin"));
             if (result.Succeeded)
             {
                 _customerRepository.Add(customer);
@@ -100,7 +101,8 @@ namespace ProjectWebIV_Backend.Controllers
             var claims = new[]
             {
               new Claim(JwtRegisteredClaimNames.Sub, user.Email),
-              new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
+              new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
+              new Claim("roles", "Admin")
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -52,6 +53,20 @@ namespace ProjectWebIV_Backend
             });
 
             services.AddIdentity<IdentityUser, IdentityRole>(cfg => cfg.User.RequireUniqueEmail = true).AddEntityFrameworkStores<PostContext>();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Admin", policy => {
+                    policy.RequireClaim(ClaimTypes.Role, "Admin");// eerste is voor in controller (Admin)
+                    policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
+                });
+
+                options.AddPolicy("User", policy => {
+                    policy.RequireClaim(ClaimTypes.Role, "User");// eerste is voor in controller (OrgAdmin)
+                    policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
+                });
+
+            });
 
             services.AddAuthentication(x =>
             {

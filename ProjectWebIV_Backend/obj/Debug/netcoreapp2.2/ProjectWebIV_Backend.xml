@@ -24,32 +24,6 @@
             <returns>true if the email is not registered yet</returns>
             <param name="email">Email.</param>/
         </member>
-        <member name="M:ProjectWebIV_Backend.Controllers.CommentController.GetComment(System.Int32)">
-            <summary>
-            Get the comment with given id
-            </summary>
-            <param name="id">the id of the comment</param>
-            <returns>The comment</returns>
-        </member>
-        <member name="M:ProjectWebIV_Backend.Controllers.CommentController.PostComment(ProjectWebIV_Backend.DTO.CommentDTO)">
-            <summary>
-            Adds a new comment
-            </summary>
-            <param name="comment">the new comment</param>
-        </member>
-        <member name="M:ProjectWebIV_Backend.Controllers.CommentController.PutComment(System.Int32,ProjectWebIV_Backend.Models.Comment)">
-            <summary>
-            Modifies a comment
-            </summary>
-            <param name="id">id of the comment to be modified</param>
-            <param name="comment">the modified comment</param>
-        </member>
-        <member name="M:ProjectWebIV_Backend.Controllers.CommentController.DeleteComment(System.Int32)">
-            <summary>
-            Deletes a comment
-            </summary>
-            <param name="id">the id of the comment to be deleted</param>
-        </member>
         <member name="M:ProjectWebIV_Backend.Controllers.PostsController.GetPosts">
             <summary>
             Get all posts ordered by name
@@ -68,6 +42,12 @@
             Adds a new post
             </summary>
             <param name="post">the new post</param>
+        </member>
+        <member name="M:ProjectWebIV_Backend.Controllers.PostsController.PostComment(System.Int32,ProjectWebIV_Backend.DTO.CommentDTO)">
+            <summary>
+            Adds a new comment
+            </summary>
+            <param name="comment">the new comment</param>
         </member>
         <member name="M:ProjectWebIV_Backend.Controllers.PostsController.PutPost(System.Int32,ProjectWebIV_Backend.Models.Post)">
             <summary>

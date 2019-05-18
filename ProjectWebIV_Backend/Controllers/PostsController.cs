@@ -60,6 +60,7 @@ namespace ProjectWebIV_Backend.Controllers
         /// Adds a new post
         /// </summary>
         /// <param name="post">the new post</param>
+        [Authorize(Policy = "Admin", Roles = "Admin")]
         [HttpPost]
         public ActionResult<Post> PostPost(PostDTO post)
         {
@@ -101,6 +102,7 @@ namespace ProjectWebIV_Backend.Controllers
         /// <param name="id">id of the post to be modified</param>
         /// <param name="post">the modified post</param>
         [HttpPut("{id}")]
+        [Authorize(Policy = "Admin", Roles = "Admin")]
         public IActionResult PutPost(int id, Post post)
         {
             if (id != post.Id)
@@ -118,6 +120,7 @@ namespace ProjectWebIV_Backend.Controllers
         /// </summary>
         /// <param name="id">the id of the post to be deleted</param>
         [HttpDelete("{id}")]
+        [Authorize(Policy = "Admin", Roles = "Admin")]
         public ActionResult<Post> DeletePost(int id)
         {
             Post post = _postRepository.GetBy(id);

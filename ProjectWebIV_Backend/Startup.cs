@@ -57,12 +57,14 @@ namespace ProjectWebIV_Backend
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("Admin", policy => {
-                    policy.RequireClaim(ClaimTypes.Role, "Admin");// eerste is voor in controller (Admin)
+                    policy.RequireClaim(ClaimTypes.Role, "Admin");
+                    policy.RequireRole("Admin");
                     policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
                 });
 
                 options.AddPolicy("User", policy => {
-                    policy.RequireClaim(ClaimTypes.Role, "User");// eerste is voor in controller (OrgAdmin)
+                    policy.RequireClaim(ClaimTypes.Role, "User");
+                    policy.RequireRole("User");
                     policy.AuthenticationSchemes.Add(JwtBearerDefaults.AuthenticationScheme);
                 });
 
@@ -71,6 +73,8 @@ namespace ProjectWebIV_Backend
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
             })
             .AddJwtBearer(x =>
             {

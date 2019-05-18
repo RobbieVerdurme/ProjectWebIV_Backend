@@ -17,6 +17,13 @@
             <param name="model">the user details</param>
             <returns></returns>
         </member>
+        <member name="M:ProjectWebIV_Backend.Controllers.AccountController.RegisterAdmin(ProjectWebIV_Backend.DTO.RegisterDTO)">
+            <summary>
+            Register a admin
+            </summary>
+            <param name="model">the user details</param>
+            <returns></returns>
+        </member>
         <member name="M:ProjectWebIV_Backend.Controllers.AccountController.CheckAvailableUserName(System.String)">
             <summary>
             Checks if an email is available as username

@@ -21,18 +21,21 @@ namespace ProjectWebIV_Backend.Controllers
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
+        //private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ICustomerRepository _customerRepository;
         private readonly IConfiguration _config;
 
         public AccountController(
           SignInManager<IdentityUser> signInManager,
           UserManager<IdentityUser> userManager,
+          //RoleManager<IdentityRole> rolManager,
           ICustomerRepository customerRepository,
           IConfiguration config)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _customerRepository = customerRepository;
+            //_roleManager = rolManager;
             _config = config;
         }
 
@@ -40,7 +43,6 @@ namespace ProjectWebIV_Backend.Controllers
         /// Login
         /// </summary>
         /// <param name="model">the login details</param>
-        [Authorize(Policy ="Admin")]
         [HttpPost]
         public async Task<ActionResult<String>> CreateToken(LoginDTO model)
         {
@@ -52,7 +54,8 @@ namespace ProjectWebIV_Backend.Controllers
 
                 if (result.Succeeded)
                 {
-                    string token = GetToken(user);
+                    var role = await _userManager.IsInRoleAsync(user, "Admin");
+                    string token = GetToken(user, role ? "Admin":"User");
                     return Created("", token); //returns only the token                    
                 }
             }
@@ -68,15 +71,54 @@ namespace ProjectWebIV_Backend.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<String>> Register(RegisterDTO model)
         {
+            /****************Add roles
+            if(!await _roleManager.RoleExistsAsync("User"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole("User"));
+                await _roleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+            */
+            
             IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
             Customer customer = new Customer { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             var result = await _userManager.CreateAsync(user, model.Password);
-            await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Role,"Admin"));
+            await _userManager.AddToRoleAsync(user, "User");
             if (result.Succeeded)
             {
                 _customerRepository.Add(customer);
                 _customerRepository.SaveChanges();
-                string token = GetToken(user);
+                string token = GetToken(user, "User");
+                return Created("", token);
+            }
+            return BadRequest();
+        }
+
+        /// <summary>
+        /// Register a admin
+        /// </summary>
+        /// <param name="model">the user details</param>
+        /// <returns></returns>
+        [Authorize(Policy ="Admin", Roles ="Admin")]
+        [HttpPost("registerAdmin")]
+        public async Task<ActionResult<String>> RegisterAdmin(RegisterDTO model)
+        {
+            /****************Add roles
+            if(!await _roleManager.RoleExistsAsync("User"))
+            {
+                await _roleManager.CreateAsync(new IdentityRole("User"));
+                await _roleManager.CreateAsync(new IdentityRole("Admin"));
+            }
+            */
+
+            IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
+            Customer customer = new Customer { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
+            var result = await _userManager.CreateAsync(user, model.Password);
+            await _userManager.AddToRoleAsync(user, "Admin");
+            if (result.Succeeded)
+            {
+                _customerRepository.Add(customer);
+                _customerRepository.SaveChanges();
+                string token = GetToken(user, "Admin");
                 return Created("", token);
             }
             return BadRequest();
@@ -95,14 +137,14 @@ namespace ProjectWebIV_Backend.Controllers
             return user == null;
         }
 
-        private String GetToken(IdentityUser user)
+        private String GetToken(IdentityUser user, string role)
         {
             // Create the token
             var claims = new[]
             {
               new Claim(JwtRegisteredClaimNames.Sub, user.Email),
               new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName),
-              new Claim("roles", "Admin")
+              new Claim("roles", role)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Tokens:Key"]));

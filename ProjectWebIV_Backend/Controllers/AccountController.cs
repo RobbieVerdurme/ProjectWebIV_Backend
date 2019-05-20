@@ -21,21 +21,18 @@ namespace ProjectWebIV_Backend.Controllers
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
-        //private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ICustomerRepository _customerRepository;
         private readonly IConfiguration _config;
 
         public AccountController(
           SignInManager<IdentityUser> signInManager,
           UserManager<IdentityUser> userManager,
-          //RoleManager<IdentityRole> rolManager,
           ICustomerRepository customerRepository,
           IConfiguration config)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _customerRepository = customerRepository;
-            //_roleManager = rolManager;
             _config = config;
         }
 
@@ -70,15 +67,7 @@ namespace ProjectWebIV_Backend.Controllers
         [AllowAnonymous]
         [HttpPost("register")]
         public async Task<ActionResult<String>> Register(RegisterDTO model)
-        {
-            /****************Add roles
-            if(!await _roleManager.RoleExistsAsync("User"))
-            {
-                await _roleManager.CreateAsync(new IdentityRole("User"));
-                await _roleManager.CreateAsync(new IdentityRole("Admin"));
-            }
-            */
-            
+        {            
             IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
             Customer customer = new Customer { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -102,14 +91,6 @@ namespace ProjectWebIV_Backend.Controllers
         [HttpPost("registerAdmin")]
         public async Task<ActionResult<String>> RegisterAdmin(RegisterDTO model)
         {
-            /****************Add roles
-            if(!await _roleManager.RoleExistsAsync("User"))
-            {
-                await _roleManager.CreateAsync(new IdentityRole("User"));
-                await _roleManager.CreateAsync(new IdentityRole("Admin"));
-            }
-            */
-
             IdentityUser user = new IdentityUser { UserName = model.Email, Email = model.Email };
             Customer customer = new Customer { Email = model.Email, FirstName = model.FirstName, LastName = model.LastName };
             var result = await _userManager.CreateAsync(user, model.Password);

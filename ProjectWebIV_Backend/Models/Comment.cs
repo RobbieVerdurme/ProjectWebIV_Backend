@@ -12,14 +12,23 @@ namespace ProjectWebIV_Backend.Models
         public int Id { get; set; }
         [Required]
         public string Text { get; set; }
-
         public DateTime Created { get; set; }
-
         [Required]
         public string Name { get; set; }
         #endregion
 
         #region Constructor
+        public Comment(int id)
+        {
+            Id = id;
+        }
+        public Comment(int id, string text, string name)
+        {
+            Id = id;
+            Text = text;
+            Created = DateTime.Now;
+            Name = name;
+        }
         public Comment(string text, string name)
         {
             Text = text;

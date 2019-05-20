@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAUn1mjZ9nWEWYg7Ll6GqK4QAAAAACAAAAAAAQZgAAAAEAACAAAAB15uGJpyup6cuqcHePzRCk1neIHBouYgYApYsxd+K/hAAAAAAOgAAAAAIAACAAAACrdS4ddn3eWykaearGnO0v6iu01y+cbjV7ioaHpBGzOoAAAAC6WRXOdI3aqD8y8sMCjj3b3rhj8m350IWa1eXgAVd790z7cNCJTadGFikvHG8Cx9BBdzaGA0Rk7OrkwVNOsH/yL1myVzn3GbXqdXKVJ6HphMZN+SBddDO8YpqHHVsfzVvlwJaxudzLkNAfRMAMqP/1dx59EN3bmugvxh+XuTGClkAAAAAfm3QyioxegIl+qDxWlY1NAZYrheCgAJ27AzBOVhlIG2LkPAG9TChwM6c+m1XKXv3bjpq2nipl653wqDmqCrvD</EncryptedPassword>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="PostContext">
+      <Value>Data Source=tcp:projectwebivbackend20190519035639dbserver.database.windows.net,1433%3bInitial Catalog=ProjectWebIVBackend20190519035639_db%3bUser Id=Robbie%40projectwebivbackend20190519035639dbserver%3bPassword=ni%28eFox15930</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="ProjectWebIV_Backend.Data.PostContext">
+      <Value>Data Source=tcp:projectwebivbackend20190519035639dbserver.database.windows.net,1433%3bInitial Catalog=ProjectWebIVBackend20190519035639_db%3bUser Id=Robbie%40projectwebivbackend20190519035639dbserver%3bPassword=ni%28eFox15930</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

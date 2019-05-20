@@ -24,7 +24,8 @@ namespace ProjectWebIV_Backend.Data
                 .HasMany(p => p.Comments)
                 .WithOne()
                 .IsRequired()
-                .HasForeignKey("PostId"); //Shadow property
+                .HasForeignKey("PostId")
+                .OnDelete(DeleteBehavior.Cascade); //Shadow property
             modelBuilder.Entity<Post>().Property(r => r.Title).IsRequired().HasMaxLength(50);
 
             modelBuilder.Entity<Comment>().Property(r => r.Text).IsRequired();
@@ -34,9 +35,8 @@ namespace ProjectWebIV_Backend.Data
             modelBuilder.Entity<Customer>().Property(c => c.FirstName).IsRequired().HasMaxLength(50);
             modelBuilder.Entity<Customer>().Property(c => c.Email).IsRequired().HasMaxLength(100);
 
-            //Another way to seed the database
             modelBuilder.Entity<Post>().HasData(
-                new Post { Id = 1, Title = "Post 1", Created = DateTime.Now, Description="testje" },
+                new Post { Id = 1, Title = "Post 1", Created = DateTime.Now, Description = "testje" },
                 new Post { Id = 2, Title = "Post 2", Created = DateTime.Now }
             );
 

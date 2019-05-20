@@ -44,6 +44,14 @@
             <param name="id">the id of the post</param>
             <returns>The post</returns>
         </member>
+        <member name="M:ProjectWebIV_Backend.Controllers.PostsController.GetComment(System.Int32,System.Int32)">
+            <summary>
+            Get the comment with given id
+            </summary>
+            <param name="id">the id of the post</param>
+            <param name="id2">the id of the comment</param>
+            <returns>The comment</returns>
+        </member>
         <member name="M:ProjectWebIV_Backend.Controllers.PostsController.PostPost(ProjectWebIV_Backend.DTO.PostDTO)">
             <summary>
             Adds a new post
@@ -68,6 +76,13 @@
             Deletes a post
             </summary>
             <param name="id">the id of the post to be deleted</param>
+        </member>
+        <member name="M:ProjectWebIV_Backend.Controllers.PostsController.DeleteComment(System.Int32,System.Int32)">
+            <summary>
+            Deletes a comment
+            </summary>
+            <param name="id">the id of the post of the comment</param>
+            <param name="id2">the id of the comment</param>
         </member>
     </members>
 </doc>

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\PubTmp\Out\" />
+  <dbfullsql path="C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\PubTmp\EFSQLScripts\ProjectWebIV_Backend.Data.PostContext.sql" />
+</sitemanifest>

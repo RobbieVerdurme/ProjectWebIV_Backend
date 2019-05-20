@@ -43,11 +43,6 @@ namespace ProjectWebIV_Backend.Data.Repositories
             return _posts.Include(r => r.Comments).SingleOrDefault(r => r.Id == id);
         }
 
-        public void PostComment(int id, Comment comment)
-        {
-            _posts.Where(p => p.Id == id).FirstOrDefault().Comments.Add(comment);
-        }
-
         public void SaveChanges()
         {
             _context.SaveChanges();
@@ -55,8 +50,13 @@ namespace ProjectWebIV_Backend.Data.Repositories
 
         public bool TryGetPost(int id, out Post post)
         {
-            post = _context.Posts.Include(t => t.Comments).FirstOrDefault(t => t.Id == id);
+            post = _context.Posts.FirstOrDefault(t => t.Id == id);
             return post != null;
+        }
+
+        public Comment GetComment(int id, Comment comment)
+        {
+            return _context.Posts.Where(p => p.Id == id).FirstOrDefault().Comments.Where(c => c.Name == comment.Name && c.Text == comment.Text).FirstOrDefault();
         }
 
         public void Update(Post post)

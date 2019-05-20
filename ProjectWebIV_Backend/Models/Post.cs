@@ -46,6 +46,10 @@ namespace ProjectWebIV_Backend.Models
 
         #region Methods
         public void AddComment(Comment comment) => Comments.Add(comment);
+        public void DeleteComment(Comment comment) {
+            var commentToDelete = Comments.Where(c => c.Id == comment.Id).FirstOrDefault();
+            Comments.Remove(commentToDelete);
+        }
         public Comment GetComment(int id) => Comments.SingleOrDefault(i => i.Id == id);
         #endregion
     }

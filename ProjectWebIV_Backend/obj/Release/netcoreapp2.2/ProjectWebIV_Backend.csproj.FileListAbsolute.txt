@@ -1,0 +1,16 @@
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\bin\Release\netcoreapp2.2\ProjectWebIV_Backend.deps.json
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\bin\Release\netcoreapp2.2\ProjectWebIV_Backend.runtimeconfig.json
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\bin\Release\netcoreapp2.2\ProjectWebIV_Backend.runtimeconfig.dev.json
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\bin\Release\netcoreapp2.2\ProjectWebIV_Backend.dll
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\bin\Release\netcoreapp2.2\ProjectWebIV_Backend.pdb
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\bin\Release\netcoreapp2.2\ProjectWebIV_Backend.xml
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\ProjectWebIV_Backend.csproj.CoreCompileInputs.cache
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\ProjectWebIV_Backend.RazorAssemblyInfo.cache
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\ProjectWebIV_Backend.RazorAssemblyInfo.cs
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\ProjectWebIV_Backend.AssemblyInfoInputs.cache
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\ProjectWebIV_Backend.AssemblyInfo.cs
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\ProjectWebIV_Backend.RazorTargetAssemblyInfo.cache
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\ProjectWebIV_Backend.dll
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\ProjectWebIV_Backend.xml
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\ProjectWebIV_Backend.pdb
+C:\Users\Boeferrob\OneDrive\Hogent\WebIV\ProjectWebIV_Backend\ProjectWebIV_Backend\obj\Release\netcoreapp2.2\ProjectWebIV_Backend.csprojAssemblyReference.cache
